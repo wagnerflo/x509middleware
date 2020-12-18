@@ -1,0 +1,8 @@
+__pycache__/
+.pyenv/
+tests/ca.srl
+tests/httpd.conf
+tests/httpd.pid
+tests/*.key
+tests/*.crt
+tests/*.csr
