@@ -1,5 +1,7 @@
 __pycache__/
 .pyenv/
+build/
+dist/
 tests/ca.srl
 tests/httpd.conf
 tests/httpd.pid
@@ -7,3 +9,4 @@ tests/*.key
 tests/*.comb
 tests/*.crt
 tests/*.csr
+x509middleware.egg-info/

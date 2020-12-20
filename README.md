@@ -29,9 +29,9 @@ $ pip install x509middleware
 
 This middlware class will try to find and parse a client certificate for
 a ASGI http or websocket request. It supports the proposed
-[tls extension](../../../../django/asgiref/pull/192) to the ASGI protocol
-as well as pulling the certificate from a header supplied by a reverse
-proxy your app is deployed behind.
+[tls extension](https://github.com/django/asgiref/pull/192) to the ASGI
+protocol as well as pulling the certificate from a header supplied by a
+reverse proxy your app is deployed behind.
 
 It will set the key `scope['client_cert']` to a
 *asn1crypto.x509.Certificate* object or *None* if it can't find or parse
