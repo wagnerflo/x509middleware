@@ -1,14 +1,5 @@
 from .util import load_certificate,decode_header
 
-# common proxy headers are
-#   CLIENT-CERT
-#   X-SSL-CLIENT-CERT
-#   X-CLIENT-CERT
-#   X-CLIENT-CERTIFICATE
-#   X-CLIENT-CRT
-#   X-SSL-CERT
-#   SSLClientCertb64
-
 class ClientCertificateMiddleware:
     def __init__(self, app, *, use_tls_extension=True, proxy_header=None):
         self.app = app
