@@ -31,7 +31,7 @@ jobs:
           make -C tests certs
       - name: Start uvicorn
         run: |
-          uvicorn tests:app &
+          uvicorn tests.srv:app &
       - name: Start apache2
         run: |
           make -C tests httpd &
