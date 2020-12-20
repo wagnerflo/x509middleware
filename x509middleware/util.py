@@ -23,7 +23,9 @@ def decode_header(hdr):
 
 def load_certificate(data):
     try:
-        _,_,der = pem.unarmor(data)
-        return x509.Certificate.load(der)
-    except:
-        return None
+        _,_,data = pem.unarmor(data)
+    finally:
+        try:
+            return x509.Certificate.load(data)
+        except:
+            return None
