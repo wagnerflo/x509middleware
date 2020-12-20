@@ -31,5 +31,6 @@ app = Starlette(
         Mount('/base64', create_sub_app('client-cert-base64')),
         Mount('/encode', create_sub_app('client-cert-encode')),
         Mount('/plain',  create_sub_app('client-cert-plain')),
+        Mount('/nginx',  create_sub_app('client-cert-nginx')),
     ],
 )

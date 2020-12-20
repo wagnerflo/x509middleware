@@ -1,4 +1,4 @@
-.PHONY: certs httpd
+.PHONY: certs httpd nginx
 
 certs: ca.crt ca.key
 certs: srv.key srv.crt
@@ -30,3 +30,6 @@ httpd.conf: httpd.conf.sh
 
 httpd: httpd.conf srv.crt srv.key
 	$(shell apxs -q sbindir)/$(shell apxs -q progname) -X -f $(CURDIR)/$<
+
+nginx: nginx.conf
+	nginx -c $< -p $(CURDIR)
