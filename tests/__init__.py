@@ -28,9 +28,10 @@ app = Starlette(
     debug=True,
     routes=[
         Route('/', common_name),
-        Mount('/base64', create_sub_app('client-cert-base64')),
-        Mount('/encode', create_sub_app('client-cert-encode')),
-        Mount('/plain',  create_sub_app('client-cert-plain')),
-        Mount('/nginx',  create_sub_app('client-cert-nginx')),
+        Mount('/base64der', create_sub_app('client-cert-base64-der')),
+        Mount('/base64pem', create_sub_app('client-cert-base64-pem')),
+        Mount('/encode',    create_sub_app('client-cert-encode')),
+        Mount('/plain',     create_sub_app('client-cert-plain')),
+        Mount('/nginx',     create_sub_app('client-cert-nginx')),
     ],
 )

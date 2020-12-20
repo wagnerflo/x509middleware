@@ -15,7 +15,7 @@ jobs:
           pip install asn1crypto uvicorn starlette httpx
       - name: Install system packages
         run: |
-          sudo apt-get install apache2 apache2-dev nginx make
+          sudo apt-get install apache2 apache2-dev nginx haproxy make
       - name: Generate certifcates
         run: |
           make -C tests certs
@@ -28,6 +28,9 @@ jobs:
       - name: Start nginx
         run:
           make -C tests nginx &
+      - name: Start haproxy
+        run:
+          make -C tests haproxy &
       - name: Run tests
         run: |
           sleep 5

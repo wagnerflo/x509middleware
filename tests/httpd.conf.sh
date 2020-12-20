@@ -37,9 +37,9 @@ SSLVerifyDepth 2
 
 ProxyPass / http://127.0.0.1:8000/
 RequestHeader unset CLIENT-CERT-PLAIN
-RequestHeader unset CLIENT-CERT-BASE64
+RequestHeader unset CLIENT-CERT-BASE64-PEM
 RequestHeader unset CLIENT-CERT-ENCODE
-RequestHeader set CLIENT-CERT-PLAIN  "%{SSL_CLIENT_CERT}s"
-RequestHeader set CLIENT-CERT-BASE64 "expr=%{base64:%{SSL_CLIENT_CERT}s}"
-RequestHeader set CLIENT-CERT-ENCODE "expr=%{escape:%{SSL_CLIENT_CERT}s}"
+RequestHeader set CLIENT-CERT-PLAIN      "%{SSL_CLIENT_CERT}s"
+RequestHeader set CLIENT-CERT-BASE64-PEM "expr=%{base64:%{SSL_CLIENT_CERT}s}"
+RequestHeader set CLIENT-CERT-ENCODE     "expr=%{escape:%{SSL_CLIENT_CERT}s}"
 EOF

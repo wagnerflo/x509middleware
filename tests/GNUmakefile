@@ -1,4 +1,4 @@
-.PHONY: certs httpd nginx
+.PHONY: certs httpd nginx haproxy
 
 certs: ca.crt ca.key
 certs: srv.key srv.crt
@@ -25,11 +25,17 @@ ca.crt: ca.key
 	  -CA $(word 3,$^) -CAkey $(word 4,$^) -CAcreateserial \
 	  -in $< -out $@
 
+%.comb: %.crt %.key
+	cat $^ > $@
+
 httpd.conf: httpd.conf.sh
 	sh $< > $@
 
-httpd: httpd.conf srv.crt srv.key
+httpd: httpd.conf srv.crt srv.key ca.crt
 	$(shell apxs -q sbindir)/$(shell apxs -q progname) -X -f $(CURDIR)/$<
 
-nginx: nginx.conf
+nginx: nginx.conf srv.crt srv.key ca.crt
 	nginx -c $< -p $(CURDIR)
+
+haproxy: haproxy.conf srv.comb ca.crt
+	haproxy -d -f $<

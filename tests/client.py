@@ -6,8 +6,9 @@ client_conf = dict(
 )
 
 servers = {
-    '8001': ('base64', 'encode', 'plain'),
+    '8001': ('base64pem', 'encode', 'plain'),
     '8002': ('nginx',),
+    '8003': ('base64der',)
 }
 
 with httpx.Client(**client_conf) as client:
