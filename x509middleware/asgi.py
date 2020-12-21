@@ -28,9 +28,8 @@ class ClientCertificateMiddleware:
         # try per upcoming asgi tls extension (https://git.io/JL4dO)
         if self.use_tls_extension:
             try:
-                return load_certificate(
-                    next(iter(scope['extensions']['tls']['tls_client_cert_chain']))
-                )
+                pem = next(iter(scope['extensions']['tls']['client_cert_chain']))
+                return load_certificate(pem.encode('ascii'))
             except (KeyError, StopIteration):
                 pass
 
